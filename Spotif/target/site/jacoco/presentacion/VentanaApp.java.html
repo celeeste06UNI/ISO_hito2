@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>VentanaApp.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">iso</a> &gt; <a href="index.source.html" class="el_package">presentacion</a> &gt; <span class="el_source">VentanaApp.java</span></div><h1>VentanaApp.java</h1><pre class="source lang-java linenums"><span class="nc" id="L1">package presentacion;</span>
+import dominio.Cancion;
+import dominio.GestorCancion;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import java.awt.BorderLayout;
+import javax.swing.SwingConstants;
+import java.awt.Font;
+import javax.swing.JTabbedPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
+import java.awt.Insets;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+import javax.swing.JTextArea;
+import javax.swing.DefaultListModel;
+import javax.swing.JButton;
+import javax.swing.JList;
+import javax.swing.JScrollPane;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+
+import javax.swing.event.ListSelectionListener;
+import javax.swing.event.ListSelectionEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.Color;
+import javax.swing.ImageIcon;
+import java.awt.Toolkit;
+
+public class VentanaApp {
+
+	private JFrame frame;
+<span class="nc" id="L42">	GestorCancion gesCan = new GestorCancion();</span>
+	private JPanel Streaming;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+<span class="nc" id="L49">		EventQueue.invokeLater(new Runnable() {</span>
+			public void run() {
+				try {
+<span class="nc" id="L52">					VentanaApp window = new VentanaApp();</span>
+<span class="nc" id="L53">					window.frame.setVisible(true);</span>
+<span class="nc" id="L54">				} catch (Exception e) {</span>
+<span class="nc" id="L55">					e.printStackTrace();</span>
+				}
+<span class="nc" id="L57">			}</span>
+		});
+<span class="nc" id="L59">	}</span>
+
+	/**
+	 * Create the application.
+	 * 
+	 * @throws SQLException
+	 */
+<span class="nc" id="L66">	public VentanaApp() throws SQLException {</span>
+<span class="nc" id="L67">		initialize();</span>
+<span class="nc" id="L68">	}</span>
+
+	/**
+	 * Initialize the contents of the frame.
+	 * 
+	 * @throws SQLException
+	 */
+	private void initialize() throws SQLException {
+<span class="nc" id="L76">		frame = new JFrame();</span>
+<span class="nc" id="L77">		frame.setIconImage(Toolkit.getDefaultToolkit().getImage(VentanaApp.class.getResource(&quot;/Presentacion/music.png&quot;)));</span>
+<span class="nc" id="L78">		frame.setBounds(100, 100, 500, 353);</span>
+<span class="nc" id="L79">		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);</span>
+
+<span class="nc" id="L81">		JLabel lblSpotif = new JLabel(&quot;SPOTIF&quot;);</span>
+<span class="nc" id="L82">		lblSpotif.setForeground(new Color(128, 0, 0));</span>
+<span class="nc" id="L83">		lblSpotif.setIcon(new ImageIcon(VentanaApp.class.getResource(&quot;/Presentacion/music.png&quot;)));</span>
+<span class="nc" id="L84">		lblSpotif.setFont(new Font(&quot;Segoe UI Semibold&quot;, Font.BOLD | Font.ITALIC, 25));</span>
+<span class="nc" id="L85">		lblSpotif.setHorizontalAlignment(SwingConstants.CENTER);</span>
+<span class="nc" id="L86">		frame.getContentPane().add(lblSpotif, BorderLayout.NORTH);</span>
+
+<span class="nc" id="L88">		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);</span>
+<span class="nc" id="L89">		frame.getContentPane().add(tabbedPane, BorderLayout.CENTER);</span>
+
+<span class="nc" id="L91">		Streaming = new JPanel();</span>
+<span class="nc" id="L92">		tabbedPane.addTab(&quot;Streaming&quot;, null, Streaming, null);</span>
+<span class="nc" id="L93">		GridBagLayout gbl_Streaming = new GridBagLayout();</span>
+<span class="nc" id="L94">		gbl_Streaming.columnWidths = new int[] { 164, 104, 38, 70, 89, 0 };</span>
+<span class="nc" id="L95">		gbl_Streaming.rowHeights = new int[] { 30, 46, 111, 0, 41, 0 };</span>
+<span class="nc" id="L96">		gbl_Streaming.columnWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };</span>
+<span class="nc" id="L97">		gbl_Streaming.rowWeights = new double[] { 0.0, 1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };</span>
+<span class="nc" id="L98">		Streaming.setLayout(gbl_Streaming);</span>
+
+<span class="nc" id="L100">		JLabel lblCanciones = new JLabel(&quot;Canciones&quot;);</span>
+<span class="nc" id="L101">		GridBagConstraints gbc_lblCanciones = new GridBagConstraints();</span>
+<span class="nc" id="L102">		gbc_lblCanciones.insets = new Insets(0, 0, 5, 5);</span>
+<span class="nc" id="L103">		gbc_lblCanciones.gridx = 0;</span>
+<span class="nc" id="L104">		gbc_lblCanciones.gridy = 0;</span>
+<span class="nc" id="L105">		Streaming.add(lblCanciones, gbc_lblCanciones);</span>
+
+<span class="nc" id="L107">		JLabel lblDatos = new JLabel(&quot;Datos&quot;);</span>
+<span class="nc" id="L108">		GridBagConstraints gbc_lblDatos = new GridBagConstraints();</span>
+<span class="nc" id="L109">		gbc_lblDatos.gridwidth = 2;</span>
+<span class="nc" id="L110">		gbc_lblDatos.insets = new Insets(0, 0, 5, 5);</span>
+<span class="nc" id="L111">		gbc_lblDatos.gridx = 1;</span>
+<span class="nc" id="L112">		gbc_lblDatos.gridy = 0;</span>
+<span class="nc" id="L113">		Streaming.add(lblDatos, gbc_lblDatos);</span>
+		
+<span class="nc" id="L115">		JLabel lblReproductor = new JLabel(&quot;Reproductor&quot;);</span>
+<span class="nc" id="L116">		GridBagConstraints gbc_lblReproductor = new GridBagConstraints();</span>
+<span class="nc" id="L117">		gbc_lblReproductor.gridwidth = 2;</span>
+<span class="nc" id="L118">		gbc_lblReproductor.insets = new Insets(0, 0, 5, 0);</span>
+<span class="nc" id="L119">		gbc_lblReproductor.gridx = 3;</span>
+<span class="nc" id="L120">		gbc_lblReproductor.gridy = 0;</span>
+<span class="nc" id="L121">		Streaming.add(lblReproductor, gbc_lblReproductor);</span>
+		
+<span class="nc" id="L123">		JPanel panel = new JPanel();</span>
+<span class="nc" id="L124">		panel.setEnabled(false);</span>
+<span class="nc" id="L125">		panel.setBackground(Color.WHITE);</span>
+<span class="nc" id="L126">		panel.setLayout(null);</span>
+<span class="nc" id="L127">		GridBagConstraints gbc_panel = new GridBagConstraints();</span>
+<span class="nc" id="L128">		gbc_panel.gridwidth = 2;</span>
+<span class="nc" id="L129">		gbc_panel.gridheight = 2;</span>
+<span class="nc" id="L130">		gbc_panel.insets = new Insets(0, 0, 5, 0);</span>
+<span class="nc" id="L131">		gbc_panel.fill = GridBagConstraints.BOTH;</span>
+<span class="nc" id="L132">		gbc_panel.gridx = 3;</span>
+<span class="nc" id="L133">		gbc_panel.gridy = 1;</span>
+<span class="nc" id="L134">		Streaming.add(panel, gbc_panel);</span>
+		
+<span class="nc" id="L136">		JLabel lblNewLabel = new JLabel(&quot;&quot;);</span>
+<span class="nc" id="L137">		lblNewLabel.setBounds(20, 40, 139, 57);</span>
+<span class="nc" id="L138">		panel.add(lblNewLabel);</span>
+		
+				
+<span class="nc" id="L141">		JButton btnReproducir = new JButton(&quot;Play&quot;);</span>
+<span class="nc" id="L142">		btnReproducir.setIcon(new ImageIcon(VentanaApp.class.getResource(&quot;/Presentacion/play.png&quot;)));</span>
+<span class="nc" id="L143">		btnReproducir.setEnabled(false);</span>
+
+<span class="nc" id="L145">		GridBagConstraints gbc_btnReproducir = new GridBagConstraints();</span>
+<span class="nc" id="L146">		gbc_btnReproducir.insets = new Insets(0, 0, 5, 5);</span>
+<span class="nc" id="L147">		gbc_btnReproducir.gridx = 0;</span>
+<span class="nc" id="L148">		gbc_btnReproducir.gridy = 3;</span>
+<span class="nc" id="L149">		Streaming.add(btnReproducir, gbc_btnReproducir);</span>
+
+<span class="nc" id="L151">		JPanel Local = new JPanel();</span>
+<span class="nc" id="L152">		tabbedPane.addTab(&quot;Local&quot;, null, Local, null);</span>
+
+<span class="nc" id="L154">		conexion(Streaming);</span>
+<span class="nc" id="L155">		mostrarCancionesS(Streaming , btnReproducir,lblNewLabel);</span>
+		
+
+<span class="nc" id="L158">	}</span>
+
+	public void conexion(JPanel streaming) throws SQLException {
+		boolean controlConexion;
+		
+		
+<span class="nc" id="L164">		JLabel label = new JLabel(&quot;&quot;);</span>
+<span class="nc" id="L165">		GridBagConstraints gbc_label = new GridBagConstraints();</span>
+<span class="nc" id="L166">		gbc_label.anchor = GridBagConstraints.WEST;</span>
+<span class="nc" id="L167">		gbc_label.insets = new Insets(0, 0, 0, 5);</span>
+<span class="nc" id="L168">		gbc_label.gridx = 0;</span>
+<span class="nc" id="L169">		gbc_label.gridy = 4;</span>
+<span class="nc" id="L170">		streaming.add(label, gbc_label);</span>
+
+<span class="nc" id="L172">		controlConexion = gesCan.conexion();</span>
+
+<span class="nc bnc" id="L174" title="All 2 branches missed.">		if (controlConexion) {</span>
+<span class="nc" id="L175">			label.setText(&quot;Conectado&quot;);</span>
+<span class="nc" id="L176">		} else {</span>
+<span class="nc" id="L177">			label.setText(&quot;Conectado&quot;);</span>
+		}
+
+<span class="nc" id="L180">	}</span>
+
+	public void mostrarCancionesS(JPanel streaming, final JButton btnReproducir, final JLabel lblNewLabel) throws SQLException {
+		int i;
+<span class="nc" id="L184">		ArrayList&lt;Cancion&gt; canciones = new ArrayList();</span>
+<span class="nc" id="L185">		canciones = gesCan.cancionesBBDD();</span>
+		
+<span class="nc" id="L187">		JScrollPane scrollPane = new JScrollPane();</span>
+<span class="nc" id="L188">		GridBagConstraints gbc_scrollPane = new GridBagConstraints();</span>
+<span class="nc" id="L189">		gbc_scrollPane.gridheight = 2;</span>
+<span class="nc" id="L190">		gbc_scrollPane.insets = new Insets(0, 0, 5, 5);</span>
+<span class="nc" id="L191">		gbc_scrollPane.fill = GridBagConstraints.BOTH;</span>
+<span class="nc" id="L192">		gbc_scrollPane.gridx = 0;</span>
+<span class="nc" id="L193">		gbc_scrollPane.gridy = 1;</span>
+<span class="nc" id="L194">		streaming.add(scrollPane, gbc_scrollPane);</span>
+
+<span class="nc" id="L196">		final JList list = new JList();</span>
+
+<span class="nc" id="L198">		scrollPane.setViewportView(list);</span>
+
+<span class="nc" id="L200">		final DefaultListModel modeloLista = new DefaultListModel();</span>
+<span class="nc" id="L201">		list.setModel(modeloLista);</span>
+
+<span class="nc bnc" id="L203" title="All 2 branches missed.">		for (i = 0; i &lt; canciones.size(); i++) {</span>
+<span class="nc" id="L204">			modeloLista.addElement(canciones.get(i).getTitulo());</span>
+		}
+		
+		
+<span class="nc" id="L208">		mostrarDatosCanciones(streaming, modeloLista, list, btnReproducir, lblNewLabel);</span>
+		
+
+<span class="nc" id="L211">	}</span>
+
+	public void mostrarDatosCanciones(JPanel streaming,  final DefaultListModel modeloLista, final JList list, final JButton btnReproducir, final JLabel lblNewLabel) throws SQLException {
+		
+<span class="nc" id="L215">		final JTextArea textArea = new JTextArea();</span>
+<span class="nc" id="L216">		GridBagConstraints gbc_textArea = new GridBagConstraints();</span>
+<span class="nc" id="L217">		gbc_textArea.gridwidth = 2;</span>
+<span class="nc" id="L218">		gbc_textArea.insets = new Insets(0, 0, 5, 5);</span>
+<span class="nc" id="L219">		gbc_textArea.fill = GridBagConstraints.BOTH;</span>
+<span class="nc" id="L220">		gbc_textArea.gridx = 1;</span>
+<span class="nc" id="L221">		gbc_textArea.gridy = 1;</span>
+<span class="nc" id="L222">		streaming.add(textArea, gbc_textArea);</span>
+		
+<span class="nc" id="L224">		final JButton btnReplay = new JButton(&quot;Replay&quot;);</span>
+		
+<span class="nc" id="L226">		btnReplay.setIcon(new ImageIcon(VentanaApp.class.getResource(&quot;/Presentacion/play.png&quot;)));</span>
+<span class="nc" id="L227">		btnReplay.setEnabled(false);</span>
+<span class="nc" id="L228">		GridBagConstraints gbc_btnReplay = new GridBagConstraints();</span>
+<span class="nc" id="L229">		gbc_btnReplay.insets = new Insets(0, 0, 5, 5);</span>
+<span class="nc" id="L230">		gbc_btnReplay.gridx = 3;</span>
+<span class="nc" id="L231">		gbc_btnReplay.gridy = 3;</span>
+<span class="nc" id="L232">		Streaming.add(btnReplay, gbc_btnReplay);</span>
+		
+<span class="nc" id="L234">		final JButton btnPause = new JButton(&quot;Pause&quot;);</span>
+<span class="nc" id="L235">		btnPause.setIcon(new ImageIcon(VentanaApp.class.getResource(&quot;/Presentacion/pause.png&quot;)));</span>
+<span class="nc" id="L236">		btnPause.setEnabled(false);</span>
+<span class="nc" id="L237">		GridBagConstraints gbc_btnPause = new GridBagConstraints();</span>
+<span class="nc" id="L238">		gbc_btnPause.insets = new Insets(0, 0, 5, 0);</span>
+<span class="nc" id="L239">		gbc_btnPause.gridx = 4;</span>
+<span class="nc" id="L240">		gbc_btnPause.gridy = 3;</span>
+<span class="nc" id="L241">		Streaming.add(btnPause, gbc_btnPause);</span>
+		
+<span class="nc" id="L243">		final JButton btnSalir = new JButton(&quot;Cerrar&quot;);</span>
+<span class="nc" id="L244">		GridBagConstraints gbc_btnSalir = new GridBagConstraints();</span>
+<span class="nc" id="L245">		gbc_btnSalir.gridwidth = 2;</span>
+<span class="nc" id="L246">		gbc_btnSalir.insets = new Insets(0, 0, 0, 5);</span>
+<span class="nc" id="L247">		gbc_btnSalir.gridx = 3;</span>
+<span class="nc" id="L248">		gbc_btnSalir.gridy = 4;</span>
+<span class="nc" id="L249">		Streaming.add(btnSalir, gbc_btnSalir);</span>
+		
+<span class="nc" id="L251">		MouseListener mouseListener = new MouseAdapter() {</span>
+			public void mouseClicked(MouseEvent e) {
+<span class="nc" id="L253">				ArrayList&lt;Cancion&gt; canciones = new ArrayList();</span>
+
+<span class="nc" id="L255">				int posicion = 0;</span>
+<span class="nc bnc" id="L256" title="All 2 branches missed.">				if (e.getClickCount() == 2) {</span>
+<span class="nc" id="L257">					posicion = list.locationToIndex(e.getPoint());</span>
+
+					try {
+<span class="nc" id="L260">						canciones = gesCan.cancionesBBDD();</span>
+<span class="nc bnc" id="L261" title="All 2 branches missed.">						for (int i = 0; i &lt; canciones.size(); i++) {</span>
+<span class="nc" id="L262">							String Titulo = (String) modeloLista.getElementAt(posicion);</span>
+
+<span class="nc bnc" id="L264" title="All 2 branches missed.">							if (canciones.get(i).getTitulo().equals(Titulo)) {</span>
+							
+<span class="nc" id="L266">								textArea.setText(&quot;Nombre: &quot; + canciones.get(i).getTitulo() + &quot;\n&quot; + &quot;Precio:&quot; + canciones.get(i).getPrecio() + &quot; €&quot;);</span>
+<span class="nc" id="L267">								btnReproducir.setEnabled(true);</span>
+<span class="nc" id="L268">								btnReproducir.addActionListener(new ActionListener() {</span>
+									public void actionPerformed(ActionEvent arg0) {
+<span class="nc" id="L270">										lblNewLabel.setText(&quot;REPRODUCIENDO&quot;);</span>
+<span class="nc" id="L271">										btnPause.setEnabled(true);</span>
+										
+										
+
+<span class="nc" id="L275">									}</span>
+								});
+								
+<span class="nc" id="L278">								clickPause(btnPause, lblNewLabel, btnReplay);</span>
+<span class="nc" id="L279">								clickReplay(btnReplay, lblNewLabel, btnPause);</span>
+<span class="nc" id="L280">								clickCerrar(btnSalir, lblNewLabel,btnReplay,btnPause);</span>
+							}
+
+						}
+<span class="nc" id="L284">					} catch (SQLException e1) {</span>
+<span class="nc" id="L285">						e1.printStackTrace();</span>
+					}
+
+				}
+
+<span class="nc" id="L290">			}</span>
+		};
+<span class="nc" id="L292">		list.addMouseListener(mouseListener);</span>
+		
+<span class="nc" id="L294">	}</span>
+	
+	public void clickPause(final JButton btnPause, final JLabel lblNewLabel, final JButton btnReplay) {
+<span class="nc" id="L297">		btnPause.addActionListener(new ActionListener() {</span>
+			public void actionPerformed(ActionEvent arg0) {
+<span class="nc" id="L299">				btnPause.setEnabled(false);</span>
+<span class="nc" id="L300">				lblNewLabel.setText(&quot;CANCION EN PAUSE&quot;);</span>
+<span class="nc" id="L301">				btnReplay.setEnabled(true);</span>
+				
+<span class="nc" id="L303">			}</span>
+		});
+		
+<span class="nc" id="L306">	}</span>
+	
+	public void clickReplay(final JButton btnReplay, final JLabel lblNewLabel, final JButton btnPause) {
+<span class="nc" id="L309">		btnReplay.addActionListener(new ActionListener() {</span>
+			public void actionPerformed(ActionEvent arg0) {
+<span class="nc" id="L311">				lblNewLabel.setText(&quot;REPRODUCIENDO&quot;);</span>
+<span class="nc" id="L312">				btnReplay.setEnabled(false);</span>
+<span class="nc" id="L313">				btnPause.setEnabled(true);</span>
+<span class="nc" id="L314">			}</span>
+			
+		});
+		
+<span class="nc" id="L318">	}</span>
+	
+	public void clickCerrar(JButton btnSalir, final JLabel lblNewLabel, final JButton btnReplay, final JButton btnPause) {
+<span class="nc" id="L321">		btnSalir.addActionListener(new ActionListener() {</span>
+			public void actionPerformed(ActionEvent arg0) {
+<span class="nc" id="L323">				lblNewLabel.setText(&quot;&quot;);</span>
+<span class="nc" id="L324">				btnReplay.setEnabled(false);</span>
+<span class="nc" id="L325">				btnPause.setEnabled(false);</span>
+<span class="nc" id="L326">			}</span>
+		});
+<span class="nc" id="L328">	}</span>
+	
+	
+	
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

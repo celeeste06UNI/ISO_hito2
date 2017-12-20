@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>GestorCancion.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">iso</a> &gt; <a href="index.source.html" class="el_package">dominio</a> &gt; <span class="el_source">GestorCancion.java</span></div><h1>GestorCancion.java</h1><pre class="source lang-java linenums">package dominio;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+import persistencia.ManejadorBD;
+
+public class GestorCancion {
+	
+<span class="nc" id="L11">	private ManejadorBD manejador = new ManejadorBD();</span>
+	
+<span class="nc" id="L13">	public GestorCancion() {</span>
+		
+<span class="nc" id="L15">	}</span>
+	
+	public boolean conexion() throws SQLException {
+		boolean controlConexion;
+<span class="nc" id="L19">		controlConexion = manejador.conexion();</span>
+<span class="nc" id="L20">		return controlConexion;</span>
+		
+	}
+
+	public ArrayList&lt;Cancion&gt; cancionesBBDD() throws SQLException {
+<span class="nc" id="L25">		ArrayList &lt;Cancion&gt; canciones = new ArrayList();</span>
+		Cancion cancion;
+<span class="nc" id="L27">		String SQLquery = &quot;SELECT * FROM canciones&quot;;</span>
+<span class="nc" id="L28">		ResultSet resultados = manejador.leer(SQLquery);</span>
+		try {       
+<span class="nc bnc" id="L30" title="All 2 branches missed.">            if (resultados != null) { </span>
+<span class="nc bnc" id="L31" title="All 2 branches missed.">                while (resultados.next()) {</span>
+<span class="nc" id="L32">                	cancion = new Cancion(resultados.getInt(&quot;id_cancion&quot;), resultados.getString(&quot;titulo&quot;), resultados.getInt(&quot;id_album&quot;),</span>
+<span class="nc" id="L33">                			resultados.getDouble(&quot;precio&quot;));</span>
+<span class="nc" id="L34">                	canciones.add(cancion);                   </span>
+                }
+<span class="nc" id="L36">                resultados.close();</span>
+            }
+<span class="nc" id="L38">		}catch (SQLException e) {            </span>
+<span class="nc" id="L39">            e.printStackTrace();            </span>
+<span class="nc" id="L40">            throw e;</span>
+        }
+<span class="nc" id="L42">		return canciones;</span>
+	}
+	
+	
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

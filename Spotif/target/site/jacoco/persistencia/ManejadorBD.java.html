@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ManejadorBD.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">iso</a> &gt; <a href="index.source.html" class="el_package">persistencia</a> &gt; <span class="el_source">ManejadorBD.java</span></div><h1>ManejadorBD.java</h1><pre class="source lang-java linenums">package persistencia;
+
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+<span class="nc" id="L10">public class ManejadorBD {</span>
+	
+<span class="nc" id="L12">	private Connection conexion = null;</span>
+
+	
+    public boolean conexion() {
+<span class="nc" id="L16">    	boolean controlConexion= false;</span>
+    	try {
+<span class="nc" id="L18">            Class.forName(&quot;com.mysql.jdbc.Driver&quot;);</span>
+<span class="nc" id="L19">            this.conexion = DriverManager.getConnection(&quot;jdbc:mysql://localhost/spotif&quot;, &quot;root&quot;, &quot;&quot;);</span>
+<span class="nc" id="L20">            controlConexion = true;</span>
+          
+<span class="nc" id="L22">        }catch(SQLException s){</span>
+<span class="nc" id="L23">        	controlConexion = false;</span>
+
+<span class="nc" id="L25">        }catch(Exception s){</span>
+<span class="nc" id="L26">        	controlConexion = false;</span>
+        }
+  
+<span class="nc" id="L29">    	return controlConexion;</span>
+    }
+    
+    public ResultSet leer(String SQLquery) throws SQLException{
+    	
+<span class="nc" id="L34">    	Statement comando = null;    </span>
+<span class="nc" id="L35">    	ResultSet resultados = null;</span>
+   
+            try {
+<span class="nc" id="L38">            	comando = conexion.createStatement();            </span>
+<span class="nc" id="L39">                resultados = comando.executeQuery(SQLquery);</span>
+                
+<span class="nc" id="L41">            } catch (SQLException e) {            </span>
+<span class="nc" id="L42">                e.printStackTrace();            </span>
+<span class="nc" id="L43">                throw e;</span>
+            }
+            
+<span class="nc" id="L46">            return resultados;</span>
+    }
+
+   
+    
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

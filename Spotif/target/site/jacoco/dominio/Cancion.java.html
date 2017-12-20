@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Cancion.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">iso</a> &gt; <a href="index.source.html" class="el_package">dominio</a> &gt; <span class="el_source">Cancion.java</span></div><h1>Cancion.java</h1><pre class="source lang-java linenums">package dominio;
+
+public class Cancion {
+	
+	private int id_cancion;
+	private String titulo;
+	private int id_album;
+	private double precio;
+
+
+	public Cancion(int id_cancion, String titulo, int id_album, double precio) {
+<span class="nc" id="L12">		super();</span>
+<span class="nc" id="L13">		this.id_cancion = id_cancion;</span>
+<span class="nc" id="L14">		this.titulo = titulo;</span>
+<span class="nc" id="L15">		this.id_album = id_album;</span>
+<span class="nc" id="L16">		this.precio = precio;</span>
+<span class="nc" id="L17">	}</span>
+
+	public double getPrecio() {
+<span class="nc" id="L20">		return precio;</span>
+	}
+
+	public void setPrecio(double precio) {
+<span class="nc" id="L24">		this.precio = precio;</span>
+<span class="nc" id="L25">	}</span>
+
+	public int getId_cancion() {
+<span class="nc" id="L28">		return id_cancion;</span>
+	}
+
+	public void setId_cancion(int id_cancion) {
+<span class="nc" id="L32">		this.id_cancion = id_cancion;</span>
+<span class="nc" id="L33">	}</span>
+
+	public String getTitulo() {
+<span class="nc" id="L36">		return titulo;</span>
+	}
+
+	public void setTitulo(String titulo) {
+<span class="nc" id="L40">		this.titulo = titulo;</span>
+<span class="nc" id="L41">	}</span>
+
+	public int getId_album() {
+<span class="nc" id="L44">		return id_album;</span>
+	}
+
+	public void setId_album(int id_album) {
+<span class="nc" id="L48">		this.id_album = id_album;</span>
+<span class="nc" id="L49">	}</span>
+
+	@Override
+	public String toString() {
+<span class="nc" id="L53">		return &quot;Cancion [id_cancion=&quot; + id_cancion + &quot;, titulo=&quot; + titulo + &quot;, id_album=&quot; + id_album + &quot;, precio=&quot;</span>
+<span class="nc" id="L54">				+ precio + &quot;]&quot;;</span>
+	}
+
+	
+	
+	
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>
