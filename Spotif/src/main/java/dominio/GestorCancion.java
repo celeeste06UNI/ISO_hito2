@@ -15,7 +15,7 @@ public class GestorCancion {
 	
 	}
 	
-	public boolean conexion() throws SQLException {
+	public boolean conexion() {
 		boolean controlConexion;
 		controlConexion = manejador.conexion();
 		return controlConexion;
@@ -46,6 +46,7 @@ public class GestorCancion {
 		Cancion cancionBBDD;
 		String SQLquery = "SELECT * FROM canciones";
 		ResultSet resultados = manejador.leer(SQLquery);
+		try {
 			if (resultados != null) {
 				while (resultados.next()) {
 					cancionBBDD = new Cancion(resultados.getInt("id_cancion"), resultados.getString("titulo"),
@@ -59,6 +60,9 @@ public class GestorCancion {
 				}
 				resultados.close();
 			}
+		}catch (Exception e) {
+			cancionEnBD = false;
+		}
 
 		return cancionEnBD;
 			

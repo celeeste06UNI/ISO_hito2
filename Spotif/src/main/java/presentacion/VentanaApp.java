@@ -1,6 +1,8 @@
 package presentacion;
 import dominio.Cancion;
 import dominio.GestorCancion;
+import persistencia.ManejadorBD;
+
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -40,6 +42,8 @@ public class VentanaApp {
 
 	private JFrame frame;
 	GestorCancion gesCan = new GestorCancion();
+	ManejadorBD manejador = new ManejadorBD();
+	
 	private JPanel Streaming;
 
 	/**
