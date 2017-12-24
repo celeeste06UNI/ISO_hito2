@@ -7,46 +7,42 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-<span class="nc" id="L10">public class ManejadorBD {</span>
+<span class="fc" id="L10">public class ManejadorBD {</span>
 	
-<span class="nc" id="L12">	private Connection conexion = null;</span>
+<span class="fc" id="L12">	private Connection conexion = null;</span>
 
-	
     public boolean conexion() {
-<span class="nc" id="L16">    	boolean controlConexion= false;</span>
+<span class="fc" id="L15">    	boolean controlConexion= false;</span>
     	try {
-<span class="nc" id="L18">            Class.forName(&quot;com.mysql.jdbc.Driver&quot;);</span>
-<span class="nc" id="L19">            this.conexion = DriverManager.getConnection(&quot;jdbc:mysql://localhost/spotif&quot;, &quot;root&quot;, &quot;&quot;);</span>
-<span class="nc" id="L20">            controlConexion = true;</span>
+<span class="nc" id="L17">            Class.forName(&quot;com.mysql.jdbc.Driver&quot;);</span>
+<span class="nc" id="L18">            this.conexion = DriverManager.getConnection(&quot;jdbc:mysql://localhost/spotif&quot;, &quot;root&quot;, &quot;&quot;);</span>
+<span class="nc" id="L19">            controlConexion = true;</span>
           
-<span class="nc" id="L22">        }catch(SQLException s){</span>
-<span class="nc" id="L23">        	controlConexion = false;</span>
+<span class="nc" id="L21">        }catch(SQLException s){</span>
+<span class="nc" id="L22">        	controlConexion = false;</span>
 
-<span class="nc" id="L25">        }catch(Exception s){</span>
-<span class="nc" id="L26">        	controlConexion = false;</span>
-        }
+<span class="fc" id="L24">        }catch(Exception s){</span>
+<span class="fc" id="L25">        	controlConexion = false;</span>
+<span class="nc" id="L26">        }</span>
   
-<span class="nc" id="L29">    	return controlConexion;</span>
+<span class="fc" id="L28">    	return controlConexion;</span>
     }
     
     public ResultSet leer(String SQLquery) throws SQLException{
     	
-<span class="nc" id="L34">    	Statement comando = null;    </span>
-<span class="nc" id="L35">    	ResultSet resultados = null;</span>
+<span class="fc" id="L33">    	Statement comando = null;    </span>
+<span class="fc" id="L34">    	ResultSet resultados = null;</span>
    
             try {
-<span class="nc" id="L38">            	comando = conexion.createStatement();            </span>
-<span class="nc" id="L39">                resultados = comando.executeQuery(SQLquery);</span>
+<span class="nc" id="L37">            	comando = conexion.createStatement();            </span>
+<span class="nc" id="L38">                resultados = comando.executeQuery(SQLquery);</span>
                 
-<span class="nc" id="L41">            } catch (SQLException e) {            </span>
-<span class="nc" id="L42">                e.printStackTrace();            </span>
-<span class="nc" id="L43">                throw e;</span>
-            }
+<span class="nc" id="L40">            } catch (SQLException e) {            </span>
+<span class="nc" id="L41">                e.printStackTrace();            </span>
+<span class="nc" id="L42">                throw e;</span>
+<span class="nc" id="L43">            }</span>
             
-<span class="nc" id="L46">            return resultados;</span>
-    }
-
-   
-    
+<span class="nc" id="L45">            return resultados;</span>
+    } 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>
