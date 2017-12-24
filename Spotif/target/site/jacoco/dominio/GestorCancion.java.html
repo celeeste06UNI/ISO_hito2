@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>GestorCancion.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">iso</a> &gt; <a href="index.source.html" class="el_package">dominio</a> &gt; <span class="el_source">GestorCancion.java</span></div><h1>GestorCancion.java</h1><pre class="source lang-java linenums">package dominio;
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>GestorCancion.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ISO</a> &gt; <a href="index.source.html" class="el_package">dominio</a> &gt; <span class="el_source">GestorCancion.java</span></div><h1>GestorCancion.java</h1><pre class="source lang-java linenums">package dominio;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -26,17 +26,17 @@ public class GestorCancion {
 <span class="fc" id="L26">		ArrayList &lt;Cancion&gt; canciones = new ArrayList();</span>
 		Cancion cancion;
 <span class="fc" id="L28">		String SQLquery = &quot;SELECT * FROM canciones&quot;;</span>
-<span class="nc" id="L29">		ResultSet resultados = manejador.leer(SQLquery);</span>
+<span class="fc" id="L29">		ResultSet resultados = manejador.leer(SQLquery);</span>
 		       
-<span class="nc bnc" id="L31" title="All 2 branches missed.">            if (resultados != null) { </span>
-<span class="nc bnc" id="L32" title="All 2 branches missed.">                while (resultados.next()) {</span>
-<span class="nc" id="L33">                	cancion = new Cancion(resultados.getInt(&quot;id_cancion&quot;), resultados.getString(&quot;titulo&quot;), resultados.getInt(&quot;id_album&quot;),</span>
-<span class="nc" id="L34">                			resultados.getDouble(&quot;precio&quot;));</span>
-<span class="nc" id="L35">                	canciones.add(cancion);                   </span>
+<span class="pc bpc" id="L31" title="1 of 2 branches missed.">            if (resultados != null) { </span>
+<span class="fc bfc" id="L32" title="All 2 branches covered.">                while (resultados.next()) {</span>
+<span class="fc" id="L33">                	cancion = new Cancion(resultados.getInt(&quot;id_cancion&quot;), resultados.getString(&quot;titulo&quot;), resultados.getInt(&quot;id_album&quot;),</span>
+<span class="fc" id="L34">                			resultados.getDouble(&quot;precio&quot;));</span>
+<span class="fc" id="L35">                	canciones.add(cancion);                   </span>
                 }
-<span class="nc" id="L37">                resultados.close();</span>
+<span class="fc" id="L37">                resultados.close();</span>
             }
-<span class="nc" id="L39">		return canciones;</span>
+<span class="fc" id="L39">		return canciones;</span>
 		
 	}
 	
@@ -46,26 +46,26 @@ public class GestorCancion {
 <span class="fc" id="L46">		boolean cancionEnBD = false;</span>
 		Cancion cancionBBDD;
 <span class="fc" id="L48">		String SQLquery = &quot;SELECT * FROM canciones&quot;;</span>
-<span class="nc" id="L49">		ResultSet resultados = manejador.leer(SQLquery);</span>
+<span class="fc" id="L49">		ResultSet resultados = manejador.leer(SQLquery);</span>
 		try {
-<span class="nc bnc" id="L51" title="All 2 branches missed.">			if (resultados != null) {</span>
-<span class="nc bnc" id="L52" title="All 2 branches missed.">				while (resultados.next()) {</span>
-<span class="nc" id="L53">					cancionBBDD = new Cancion(resultados.getInt(&quot;id_cancion&quot;), resultados.getString(&quot;titulo&quot;),</span>
-<span class="nc" id="L54">							resultados.getInt(&quot;id_album&quot;), resultados.getDouble(&quot;precio&quot;));</span>
-<span class="nc bnc" id="L55" title="All 2 branches missed.">					if(cancionBuscada == null) {</span>
-<span class="nc" id="L56">						cancionEnBD = false;</span>
-<span class="nc bnc" id="L57" title="All 2 branches missed.">					}else if (cancionBBDD.getTitulo().equals(cancionBuscada.getTitulo())) {</span>
-<span class="nc" id="L58">							cancionEnBD = true;</span>
+<span class="pc bpc" id="L51" title="1 of 2 branches missed.">			if (resultados != null) {</span>
+<span class="fc bfc" id="L52" title="All 2 branches covered.">				while (resultados.next()) {</span>
+<span class="fc" id="L53">					cancionBBDD = new Cancion(resultados.getInt(&quot;id_cancion&quot;), resultados.getString(&quot;titulo&quot;),</span>
+<span class="fc" id="L54">							resultados.getInt(&quot;id_album&quot;), resultados.getDouble(&quot;precio&quot;));</span>
+<span class="fc bfc" id="L55" title="All 2 branches covered.">					if(cancionBuscada == null) {</span>
+<span class="fc" id="L56">						cancionEnBD = false;</span>
+<span class="fc bfc" id="L57" title="All 2 branches covered.">					}else if (cancionBBDD.getTitulo().equals(cancionBuscada.getTitulo())) {</span>
+<span class="fc" id="L58">							cancionEnBD = true;</span>
 					}
 					
 				}
-<span class="nc" id="L62">				resultados.close();</span>
+<span class="fc" id="L62">				resultados.close();</span>
 			}
-<span class="nc" id="L64">		}catch (Exception e) {</span>
+<span class="pc" id="L64">		}catch (Exception e) {</span>
 <span class="nc" id="L65">			cancionEnBD = false;</span>
-<span class="nc" id="L66">		}</span>
+		}
 
-<span class="nc" id="L68">		return cancionEnBD;</span>
+<span class="fc" id="L68">		return cancionEnBD;</span>
 			
 	}
 }
