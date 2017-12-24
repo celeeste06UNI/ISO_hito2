@@ -10,7 +10,7 @@ import java.sql.Statement;
 public class ManejadorBD {
 	
 	private Connection conexion = null;
-
+	
     public boolean conexion() {
     	boolean controlConexion= false;
     	try {
@@ -28,7 +28,7 @@ public class ManejadorBD {
     	return controlConexion;
     }
     
-    public ResultSet leer(String SQLquery) throws SQLException{
+    public ResultSet leer(String SQLquery){
     	
     	Statement comando = null;    
     	ResultSet resultados = null;
@@ -38,8 +38,13 @@ public class ManejadorBD {
                 resultados = comando.executeQuery(SQLquery);
                 
             } catch (SQLException e) {            
-                e.printStackTrace();            
-                throw e;
+                e.printStackTrace();   
+                
+                try {
+					throw e;
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
             }
             
             return resultados;

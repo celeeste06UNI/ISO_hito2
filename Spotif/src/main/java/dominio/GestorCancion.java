@@ -11,7 +11,8 @@ public class GestorCancion {
 	private ManejadorBD manejador = new ManejadorBD();
 	
 	public GestorCancion() {
-		
+	
+	
 	
 	}
 	
@@ -40,7 +41,7 @@ public class GestorCancion {
 	}
 	
 	
-	public boolean ReproducirCancion(Cancion cancionBuscada)throws SQLException {
+	public boolean reproducirCancion(Cancion cancionBuscada)throws SQLException {
 		conexion();
 		boolean cancionEnBD = false;
 		Cancion cancionBBDD;

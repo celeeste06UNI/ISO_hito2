@@ -13,7 +13,6 @@ import junit.framework.Assert;
 import persistencia.ManejadorBD;
 
 public class TestGestorCancion {
-
 	@Test
 	public void testConexionBBDDObjetoNull(){
 		GestorCancion gestorCancion = null;
@@ -43,7 +42,7 @@ public class TestGestorCancion {
 		GestorCancion gestorCancion = new GestorCancion();
 		boolean canExistente = false;
 		
-		canExistente = gestorCancion.ReproducirCancion(cancionExistente);
+		canExistente = gestorCancion.reproducirCancion(cancionExistente);
 		assertTrue(canExistente);
 	}
 
@@ -54,7 +53,7 @@ public class TestGestorCancion {
 		GestorCancion gestorCancion = new GestorCancion();
 		boolean canExistente = true;
 		
-		canExistente = gestorCancion.ReproducirCancion(cancionInexistente);
+		canExistente = gestorCancion.reproducirCancion(cancionInexistente);
 		assertFalse(canExistente);
 	}
 	
@@ -64,7 +63,7 @@ public class TestGestorCancion {
 		GestorCancion gestorCancion = new GestorCancion();
 		boolean canNull = true;
 		
-		canNull = gestorCancion.ReproducirCancion(cancionNull);
+		canNull = gestorCancion.reproducirCancion(cancionNull);
 		assertFalse(canNull);
 	}
 	
@@ -75,7 +74,7 @@ public class TestGestorCancion {
 		GestorCancion gestorCancion = null;
 		boolean comprobacion = false;
 		try {
-			comprobacion = gestorCancion.ReproducirCancion(cancionExistente);
+			comprobacion = gestorCancion.reproducirCancion(cancionExistente);
 		}catch (Exception e) {
 			comprobacion = true;
 		}
@@ -89,7 +88,7 @@ public class TestGestorCancion {
 		GestorCancion gestorCancion = null;
 		boolean comprobacion = false;
 		try {
-			comprobacion = gestorCancion.ReproducirCancion(cancionExistente);
+			comprobacion = gestorCancion.reproducirCancion(cancionExistente);
 		}catch (Exception e) {
 			comprobacion = true;
 		}
@@ -104,7 +103,7 @@ public class TestGestorCancion {
 		GestorCancion gestorCancion = null;
 		boolean comprobacion = false;
 		try {
-			comprobacion = gestorCancion.ReproducirCancion(cancionExistente);
+			comprobacion = gestorCancion.reproducirCancion(cancionExistente);
 		}catch (Exception e) {
 			comprobacion = true;
 		}

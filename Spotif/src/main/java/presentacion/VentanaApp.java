@@ -12,7 +12,6 @@ import javax.swing.SwingConstants;
 import java.awt.Font;
 import javax.swing.JTabbedPane;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
@@ -28,10 +27,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import javax.swing.event.ListSelectionListener;
-import javax.swing.event.ListSelectionEvent;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
@@ -45,7 +40,6 @@ public class VentanaApp {
 	ManejadorBD manejador = new ManejadorBD();
 	
 	private JPanel Streaming;
-
 	/**
 	 * Launch the application.
 	 */
@@ -178,14 +172,14 @@ public class VentanaApp {
 		if (controlConexion) {
 			label.setText("Conectado");
 		} else {
-			label.setText("Conectado");
+			label.setText("Sin conexión");
 		}
 
 	}
 
 	public void mostrarCancionesS(JPanel streaming, final JButton btnReproducir, final JLabel lblNewLabel) throws SQLException {
 		int i;
-		ArrayList<Cancion> canciones = new ArrayList();
+		ArrayList<Cancion> canciones;
 		canciones = gesCan.cancionesBBDD();
 		
 		JScrollPane scrollPane = new JScrollPane();
@@ -254,7 +248,7 @@ public class VentanaApp {
 		
 		MouseListener mouseListener = new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
-				ArrayList<Cancion> canciones = new ArrayList();
+				ArrayList<Cancion> canciones;
 
 				int posicion = 0;
 				if (e.getClickCount() == 2) {
