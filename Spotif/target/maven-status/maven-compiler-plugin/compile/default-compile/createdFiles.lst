@@ -5,7 +5,6 @@ dominio\GestorCancion.class
 presentacion\VentanaApp$4.class
 presentacion\VentanaApp$3.class
 presentacion\VentanaApp$2$1.class
-com\mslc\iso\App.class
 presentacion\VentanaApp$1.class
 presentacion\VentanaApp$5.class
 persistencia\ManejadorBD.class

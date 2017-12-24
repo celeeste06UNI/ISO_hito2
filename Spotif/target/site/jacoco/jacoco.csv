@@ -1,12 +1,11 @@
 GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
-iso,com.mslc.iso,App,7,0,0,0,3,0,2,0,2,0
-iso,dominio,Cancion,69,0,0,0,20,0,10,0,10,0
-iso,dominio,GestorCancion,61,0,4,0,18,0,5,0,3,0
-iso,presentacion,VentanaApp,738,0,4,0,145,0,11,0,9,0
-iso,presentacion,VentanaApp.2.new ActionListener() {...},21,0,0,0,5,0,2,0,2,0
-iso,presentacion,VentanaApp.new ActionListener() {...},28,0,0,0,6,0,2,0,2,0
-iso,presentacion,VentanaApp.new ActionListener() {...},28,0,0,0,6,0,2,0,2,0
-iso,presentacion,VentanaApp.new ActionListener() {...},28,0,0,0,6,0,2,0,2,0
-iso,presentacion,VentanaApp.new MouseAdapter() {...},148,0,6,0,19,0,5,0,2,0
-iso,presentacion,VentanaApp.new Runnable() {...},16,0,0,0,7,0,2,0,2,0
-iso,persistencia,ManejadorBD,49,0,0,0,19,0,3,0,3,0
+ISO,dominio,Cancion,51,18,0,0,13,7,8,2,8,2
+ISO,dominio,GestorCancion,3,110,2,10,1,31,2,8,0,4
+ISO,presentacion,VentanaApp,752,0,4,0,147,0,11,0,9,0
+ISO,presentacion,VentanaApp.2.new ActionListener() {...},21,0,0,0,5,0,2,0,2,0
+ISO,presentacion,VentanaApp.new ActionListener() {...},28,0,0,0,6,0,2,0,2,0
+ISO,presentacion,VentanaApp.new ActionListener() {...},28,0,0,0,6,0,2,0,2,0
+ISO,presentacion,VentanaApp.new ActionListener() {...},28,0,0,0,6,0,2,0,2,0
+ISO,presentacion,VentanaApp.new MouseAdapter() {...},148,0,6,0,19,0,5,0,2,0
+ISO,presentacion,VentanaApp.new Runnable() {...},16,0,0,0,7,0,2,0,2,0
+ISO,persistencia,ManejadorBD,12,37,0,0,5,14,0,3,0,3
